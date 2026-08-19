@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>upPollo-Stats</Name>
+  <Repository>ghcr.io/mlo-tek/uppollo-stats:latest</Repository>
+  <Registry>https://github.com/mlo-Tek/uppollo-stats/pkgs/container/uppollo-stats</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/mlo-Tek/uppollo-stats</Support>
+  <Project>https://github.com/mlo-Tek/uppollo-stats</Project>
+  <Overview>Dashboard für qBittorrent → Hardlink → upPollo. Zeigt Trigger, Queue, Filter, Dupes, Fehler und erkannte erfolgreiche Uploads.</Overview>
+  <Category>Tools: Status:</Category>
+  <WebUI>http://[IP]:[PORT:8781]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/mlo-Tek/uppollo-stats/main/unraid/uppollo-stats.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/selfhst/icons/main/png/uppollo.png</Icon>
+  <ExtraParams>--restart unless-stopped</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>0</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>Private GHCR image. Unraid/Docker muss bei ghcr.io mit Leserechten für das Paket angemeldet sein.</Requires>
+  <Config Name="WebUI Port" Target="8781" Default="8781" Mode="tcp" Description="Port für das Dashboard" Type="Port" Display="always" Required="true" Mask="false">8781</Config>
+  <Config Name="Appdata" Target="/config" Default="/mnt/cache/appdata/uppollo-stats" Mode="rw" Description="SQLite-Datenbank und Statusdaten" Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/uppollo-stats</Config>
+  <Config Name="upPollo Logs" Target="/uppollo-logs" Default="/mnt/cache/appdata/uppollo/logs" Mode="ro" Description="Verzeichnis mit upPollo API-Logdateien" Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/uppollo/logs</Config>
+  <Config Name="Stats API Key" Target="STATS_API_KEY" Default="CHANGE-ME" Mode="" Description="Gemeinsamer Key für Events aus dem qBittorrent-Script" Type="Variable" Display="always" Required="true" Mask="true">CHANGE-ME</Config>
+  <Config Name="Retention Days" Target="RETENTION_DAYS" Default="365" Mode="" Description="Wie lange Upload-Events gespeichert werden" Type="Variable" Display="advanced" Required="false" Mask="false">365</Config>
+  <Config Name="Timezone" Target="TZ" Default="Europe/Berlin" Mode="" Description="Zeitzone" Type="Variable" Display="advanced" Required="false" Mask="false">Europe/Berlin</Config>
+</Container>
