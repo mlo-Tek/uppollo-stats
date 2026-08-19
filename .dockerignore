@@ -1,0 +1,8 @@
+.git
+.github
+*.zip
+__pycache__
+*.pyc
+*.db
+*.db-shm
+*.db-wal
