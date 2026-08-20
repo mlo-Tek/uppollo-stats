@@ -3,6 +3,7 @@ FROM python:3.13-alpine
 WORKDIR /app
 
 COPY app.py /app/app.py
+COPY patched_app.py /app/patched_app.py
 COPY static /app/static
 
 ENV PYTHONUNBUFFERED=1 \
@@ -13,4 +14,4 @@ ENV PYTHONUNBUFFERED=1 \
 VOLUME ["/config", "/uppollo-logs"]
 EXPOSE 8781
 
-CMD ["python3", "/app/app.py"]
+CMD ["python3", "/app/patched_app.py"]
