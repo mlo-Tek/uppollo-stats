@@ -7,7 +7,7 @@
   <script>
     (()=>{try{const m=localStorage.getItem('uppollo-stats-theme')||'system';const r=m==='system'?(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'):m;document.documentElement.dataset.theme=r;document.documentElement.dataset.themeMode=m}catch(e){}})();
   </script>
-  <link rel="stylesheet" href="/style.css?v=20260820-2">
+  <link rel="stylesheet" href="/style.css?v=20260820-3">
 </head>
 <body>
 <div class="shell">
@@ -39,7 +39,7 @@
   </header>
 
   <section class="stats">
-    <div class="stat accent-blue"><span>Getriggert</span><strong id="kTriggered">0</strong><small>qBittorrent Completion Events</small></div>
+    <div class="stat accent-blue"><span>Getriggert</span><strong id="kTriggered">0</strong><small>echte qBittorrent Completion Events</small></div>
     <div class="stat accent-green"><span>Hochgeladen</span><strong id="kUploaded">0</strong><small>erfolgreich bei RocketHD</small></div>
     <div class="stat accent-orange"><span>Gefiltert / Dupe</span><strong id="kFiltered">0</strong><small>durch upPollo verworfen</small></div>
     <div class="stat accent-pink"><span>Fehler</span><strong id="kFailed">0</strong><small>technisch fehlgeschlagen</small></div>
@@ -49,7 +49,7 @@
     <div class="insight accent-green"><span>Erfolgsquote</span><strong id="kRate">0 %</strong></div>
     <div class="insight accent-cyan"><span>Übersprungen</span><strong id="kSkipped">0</strong></div>
     <div class="insight accent-purple"><span>In Bearbeitung</span><strong id="kActive">0</strong></div>
-    <div class="insight accent-yellow"><span>Zeitraum</span><strong id="kPeriod">30 Tage</strong></div>
+    <div class="insight accent-yellow"><span>Historische Log-Imports</span><strong id="kHistorical">0</strong></div>
   </section>
 
   <section class="dashboard-grid">
@@ -57,7 +57,7 @@
       <div class="section-title chart-head">
         <div>
           <h2>Upload-Aktivität</h2>
-          <p>qBittorrent-Trigger und erfolgreiche Uploads pro Tag</p>
+          <p>Nur echte qBittorrent-Trigger und deren erfolgreiche Uploads pro Tag</p>
         </div>
         <div class="legend" aria-label="Legende">
           <span><i class="legend-dot trigger-dot"></i>Trigger</span>
@@ -70,7 +70,7 @@
     <article class="category-card">
       <div class="section-title">
         <h2>Kategorien</h2>
-        <p>Trigger im gewählten Zeitraum</p>
+        <p>Nur echte qBittorrent-Trigger im gewählten Zeitraum</p>
       </div>
       <div id="categoryBars" class="bars"></div>
     </article>
@@ -81,7 +81,7 @@
       <div>
         <div class="filter-section-title">Historie</div>
         <h2>Upload-Historie</h2>
-        <p>Vom qBittorrent-Trigger bis zum finalen upPollo-Status.</p>
+        <p>qBittorrent-Events und ältere, aus upPollo-Logs rekonstruierte Einträge.</p>
       </div>
       <div class="filters">
         <input id="searchInput" class="search-field" type="search" placeholder="Release, Group oder Grund durchsuchen …">
@@ -119,6 +119,6 @@
     <span>qBittorrent → Hardlink → upPollo</span>
   </footer>
 </div>
-<script src="/app.js?v=20260820-2"></script>
+<script src="/app.js?v=20260820-3"></script>
 </body>
 </html>
