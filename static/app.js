@@ -49,7 +49,7 @@ function renderActivity(rows){
 function renderCats(rows){
   const el=$('#categoryBars');
   const max=Math.max(...rows.map(r=>Number(r.n)||0),1);
-  el.innerHTML=rows.length?rows.map(r=>`<div class="bar-row"><div class="bar-name" title="${esc(r.category||'Unbekannt')}">${esc(r.category||'Unbekannt')}</div><div class="bar-track"><div class="bar-fill" style="width:${(Number(r.n)||0)/max*100}%"></div></div><div class="bar-n">${Number(r.n)||0}</div></div>`).join(''):'<div class="empty">Keine Daten</div>';
+  el.innerHTML=rows.length?rows.map(r=>`<div class="bar-row"><div class="bar-name" title="${esc(r.category||'–')}">${esc(r.category||'–')}</div><div class="bar-track"><div class="bar-fill" style="width:${(Number(r.n)||0)/max*100}%"></div></div><div class="bar-n">${Number(r.n)||0}</div></div>`).join(''):'<div class="empty">Keine qBittorrent-Trigger im Zeitraum</div>';
 }
 
 /* ---------- Data ---------- */
@@ -62,7 +62,7 @@ async function loadStats(){
   $('#kSkipped').textContent=s.skipped??0;
   $('#kFailed').textContent=s.failed??0;
   $('#kActive').textContent=s.active??0;
-  $('#kPeriod').textContent=`${days} Tage`;
+  $('#kHistorical').textContent=s.historical??0;
   renderActivity(d.daily||[]);
   renderCats(d.categories||[]);
 }
@@ -72,7 +72,10 @@ async function loadHistory(){
   if(search)p.set('q',search);
   const d=await getJSON('/api/uploads?'+p);
   const body=$('#historyBody'),empty=$('#emptyState'),items=d.items||[];
-  body.innerHTML=items.map(x=>`<tr><td class="time">${fmtTime(x.triggered_at)}</td><td class="release">${esc(x.release_name)}</td><td>${esc(x.category||'–')}</td><td>${esc(x.release_group||'–')}</td><td><span class="chip ${chipClass(x.status)}">${esc(statusLabels[x.status]||x.status)}</span></td><td class="reason">${esc(x.reason||'–')}</td></tr>`).join('');
+  body.innerHTML=items.map(x=>{
+    const category=x.category||(x.source==='uppollo-log'?'Historisch':'–');
+    return `<tr><td class="time">${fmtTime(x.triggered_at)}</td><td class="release">${esc(x.release_name)}</td><td>${esc(category)}</td><td>${esc(x.release_group||'–')}</td><td><span class="chip ${chipClass(x.status)}">${esc(statusLabels[x.status]||x.status)}</span></td><td class="reason">${esc(x.reason||'–')}</td></tr>`;
+  }).join('');
   empty.classList.toggle('hidden',items.length>0);
 }
 async function health(){
