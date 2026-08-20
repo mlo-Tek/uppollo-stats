@@ -6,6 +6,8 @@ COPY app.py /app/app.py
 COPY patched_app.py /app/patched_app.py
 COPY static /app/static
 
+RUN python3 -m py_compile /app/app.py /app/patched_app.py
+
 ENV PYTHONUNBUFFERED=1 \
     CONFIG_DIR=/config \
     PORT=8781 \
