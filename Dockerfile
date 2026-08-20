@@ -5,9 +5,10 @@ WORKDIR /app
 COPY app.py /app/app.py
 COPY patched_app.py /app/patched_app.py
 COPY patched_app_v06.py /app/patched_app_v06.py
+COPY patched_app_v07.py /app/patched_app_v07.py
 COPY static /app/static
 
-RUN python3 -m py_compile /app/app.py /app/patched_app.py /app/patched_app_v06.py
+RUN python3 -m py_compile /app/app.py /app/patched_app.py /app/patched_app_v06.py /app/patched_app_v07.py
 
 ENV PYTHONUNBUFFERED=1 \
     CONFIG_DIR=/config \
@@ -17,4 +18,4 @@ ENV PYTHONUNBUFFERED=1 \
 VOLUME ["/config", "/uppollo-logs"]
 EXPOSE 8781
 
-CMD ["python3", "/app/patched_app_v06.py"]
+CMD ["python3", "/app/patched_app_v07.py"]
