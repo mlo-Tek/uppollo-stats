@@ -13,7 +13,7 @@
   <Category>Tools: Status:</Category>
   <WebUI>http://[IP]:[PORT:8781]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/mlo-Tek/uppollo-stats/main/unraid/uppollo-stats.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/selfhst/icons/main/png/uppollo.png</Icon>
+  <Icon>https://raw.githubusercontent.com/mlo-Tek/SceneNFO/main/assets/container-icons/uppollo-stats.png</Icon>
   <ExtraParams>--restart unless-stopped</ExtraParams>
   <PostArgs/>
   <CPUset/>
